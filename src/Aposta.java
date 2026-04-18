@@ -23,4 +23,6 @@ public class Aposta {
         this.valorAposta = valorAposta;
         this.repetir = repetir;
     }
+    
+    
 }

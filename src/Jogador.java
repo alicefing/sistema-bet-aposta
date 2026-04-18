@@ -8,6 +8,7 @@
  * @author alicefingiro
  */
 import java.util.Date;
+import java.util.Scanner;
 
 public class Jogador {
 
@@ -33,5 +34,21 @@ public class Jogador {
         this.cpf = cpf;
         this.nacionalidade = nacionalidade;
         this.dataNascimento = dataNascimento;
+    }
+     
+
+    public void cadastrar() {
+
+        this.idJogador = InOut.leInt("Digite o ID do jogador:");
+        this.nome = InOut.leString("Digite o nome:");
+        this.sobrenome = InOut.leString("Digite o sobrenome:");
+        this.apelido = InOut.leString("Digite o apelido:");
+        this.cpf = InOut.leString("Digite o CPF:");
+        this.nacionalidade = InOut.leString("Digite a nacionalidade:");
+        this.dataNascimento = java.sql.Date.valueOf(
+            InOut.leString("Digite a data de nascimento (AAAA-MM-DD):")
+        );
+
+        InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
     }
 }
