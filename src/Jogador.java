@@ -19,6 +19,7 @@ public class Jogador {
     private String cpf;
     private String nacionalidade;
     private Date dataNascimento;
+    private Credito credito;
 
 
     public Jogador() {
