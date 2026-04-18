@@ -9,6 +9,7 @@
  */
 import java.util.Date;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Jogador {
 
@@ -19,7 +20,9 @@ public class Jogador {
     private String cpf;
     private String nacionalidade;
     private Date dataNascimento;
-    private Credito credito;
+    
+    private Credito credito = new Credito();
+    private ArrayList<Aposta> apostas = new ArrayList<>();
 
 
     public Jogador() {
@@ -51,5 +54,55 @@ public class Jogador {
         );
 
         InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
+    }
+    
+    public void menu() {
+
+        int opcao;
+
+        do {
+            System.out.println("\n===== SISTEMA BET =====");
+            System.out.println("1 - Cadastrar jogador");
+            System.out.println("2 - Adicionar crédito");
+            System.out.println("3 - Sacar crédito");
+            System.out.println("4 - Consultar saldo");
+            System.out.println("5 - Criar aposta");
+            System.out.println("6 - Listar apostas");
+            System.out.println("7 - Cancelar aposta");
+            System.out.println("0 - Sair");
+
+            opcao = InOut.leInt("Escolha uma opção:");
+
+            switch (opcao) {
+
+                case 1 -> cadastrar();
+
+                case 2 -> {
+                    double valor = InOut.leDouble("Valor para depósito:");
+                    credito.depositar(valor);
+                }
+
+                case 3 -> {
+                    double valor = InOut.leDouble("Valor para saque:");
+                    credito.sacar(valor);
+                }
+
+                case 4 -> {
+                    InOut.MsgDeInformacao("Saldo", 
+                        "Saldo atual: " + credito.consultarSaldo());
+                }
+
+                case 5 -> criarAposta(); // fazer esse metodo
+
+                case 6 -> listarApostas(); // fazer esse metodo
+
+                case 7 -> cancelarAposta();// fazer esse metodo
+
+                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
+
+                default -> InOut.MsgDeErro("Erro", "Opção inválida!");
+            }
+
+        } while (opcao != 0);
     }
 }
