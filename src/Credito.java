@@ -16,15 +16,18 @@ public class Credito {
 
     
     public Credito() {
+        this.saldo = 0.0;
+        this.bloqueado = false;
     }
 
     
     public Credito(double saldo, String validade, String moeda, boolean bloqueado) {
-        this.saldo = 0.0;
-        this.validade = validade;
-        this.moeda = moeda;
-        this.bloqueado = false;
+      this.saldo = saldo;
+      this.validade = validade;
+      this.moeda = moeda;
+      this.bloqueado = bloqueado;
     }
+    
 
     public void depositar(double valor) {
         if (bloqueado) {
@@ -82,4 +85,3 @@ public class Credito {
         System.out.println("Conta desbloqueada!");
     }
 }
-    
