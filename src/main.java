@@ -7,6 +7,7 @@ void main() {
     
     Credito conta = new Credito();
     System.out.println("Saldo: " + conta.consultarSaldo());
+    
 
     
 }

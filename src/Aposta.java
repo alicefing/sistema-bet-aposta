@@ -24,5 +24,16 @@ public class Aposta {
         this.repetir = repetir;
     }
     
+    public void definirValor(double valor) {
+        this.valorAposta = valor;
+    }
+
+    public double getValor() {
+        return valorAposta;
+    }
+
+    public void realizarAposta() {
+        System.out.println("Aposta realizada: " + valorAposta);
+    }
     
 }
