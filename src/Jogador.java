@@ -76,6 +76,8 @@ public class Jogador {
 
       
         credito.sacar(valor);
+        
+        
         apostas.add(aposta);
 
         InOut.MsgDeInformacao("Sucesso", "Aposta criada!");
@@ -100,6 +102,15 @@ public class Jogador {
 
         InOut.MsgDeInformacao("Cancelado", "Aposta cancelada e valor devolvido!");
     }
+    
+    public void listarApostas(){
+    String mensagem = "Lista de apostas:\n";
+    for(int i = 0; i < apostas.size(); i++){
+        mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i) + "\n";
+    }
+    
+    InOut.MsgSemIcone("Apostas", mensagem);
+}
     
     public void menu() {
 
