@@ -23,6 +23,7 @@ public class Jogador {
     
     private Credito credito = new Credito();
     private Aposta bet = new Aposta ();
+    private ArrayList<Aposta> apostas = new ArrayList<>();
 
 
     public Jogador() {
@@ -54,6 +55,51 @@ public class Jogador {
         );
 
         InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
+    }
+    
+     public void criarAposta (){
+
+        double valor = InOut.leDouble("Digite o valor da aposta:");
+
+        if (valor <= 0) {
+            InOut.MsgDeErro("Erro", "Valor inválido!");
+            return;
+        }
+
+        if (valor > credito.consultarSaldo()) {
+            InOut.MsgDeErro("Erro", "Saldo insuficiente!");
+            return;
+        }
+
+        Aposta aposta = new Aposta();
+        aposta.definirValor(valor);
+        aposta.realizarAposta();
+
+      
+        credito.sacar(valor);
+        apostas.add(aposta);
+
+        InOut.MsgDeInformacao("Sucesso", "Aposta criada!");
+    }
+    
+     public void cancelarAposta() {
+
+        if (apostas.isEmpty()) {
+            InOut.MsgDeErro("Erro", "Não há apostas!");
+            return;
+        }
+
+        int index = InOut.leInt("Digite o índice da aposta (0 a " + (apostas.size() - 1) + "):");
+
+        if (index < 0 || index >= apostas.size()) {
+            InOut.MsgDeErro("Erro", "Índice inválido!");
+            return;
+        }
+
+        Aposta aposta = apostas.remove(index);
+        credito.depositar(aposta.getValor());
+
+        InOut.MsgDeInformacao("Cancelado", "Aposta cancelada e valor devolvido!");
     }
     
     public void menu() {
@@ -92,11 +138,11 @@ public class Jogador {
                         "Saldo atual: " + credito.consultarSaldo());
                 }
 
-                case 5 -> bet.criarAposta(); 
+                case 5 -> criarAposta(); 
 
-                case 6 -> bet.listarApostas(); 
+                case 6 -> listarApostas(); 
 
-                case 7 -> bet.cancelarAposta();
+                case 7 -> cancelarAposta();
 
                 case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
 
@@ -105,16 +151,12 @@ public class Jogador {
 
         } while (opcao != 0);
     }
-    
-    public double getSaldo(){
-        return credito.consultarSaldo();
-    }
-    
-    public void DepositarSaldo (double saldo){
-        credito.depositar(saldo);
-    }
-    
-    public void sacarSaldo (double valor){
-        credito.sacar(valor);
+public void listarApostas(){
+        String mensagem = "Lista de apostas:\n";
+        for(int i = 0; i < apostas.size(); i++){
+            mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i) + "\n";
+        }
+
+        InOut.MsgSemIcone("Apostas", mensagem);
     }
 }
