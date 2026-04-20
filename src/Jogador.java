@@ -72,7 +72,7 @@ public class Jogador {
         }
 
         Aposta aposta = new Aposta();
-        aposta.definirValor(valor);
+        aposta.definirValor(valor); // fazer isso
         aposta.realizarAposta();
 
       
@@ -151,7 +151,9 @@ public class Jogador {
 
         } while (opcao != 0);
     }
-public void listarApostas(){
+
+    
+    public void listarApostas(){
         String mensagem = "Lista de apostas:\n";
         for(int i = 0; i < apostas.size(); i++){
             mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i) + "\n";
