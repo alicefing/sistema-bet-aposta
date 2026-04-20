@@ -11,12 +11,38 @@ import java.util.List;
  *
  * @author henri
  */
-public class GerenciadorPartidas {
+public class GerenciadorSistema {
     private List<Jogo> partidas = new ArrayList<>();
+    private List<Time> times = new ArrayList<>();
 
-    public GerenciadorPartidas() {
+    public GerenciadorSistema() {
     }
+    
+    //TIMES
 
+    public List<Time> getTimes() {
+        return times;
+    }
+    
+    public void adcTime(Time time){
+        times.add(time);
+    }
+    
+    public Time buscarTimePorNome(String nome){
+        Time resultado = null;
+        
+        for (Time t : times){
+            if(t.getNome().equalsIgnoreCase(nome)){
+                resultado = t;
+            }
+        }
+        return resultado;
+    }
+    
+    
+    
+    //JOGOS
+    
     //Retorna a lista de partidas
     public List<Jogo> getPartidas() {
         return partidas;
@@ -31,7 +57,7 @@ public class GerenciadorPartidas {
         List<Jogo> resultado = new ArrayList<>();
         
         for(Jogo j : partidas){
-            if(j.getTimeCasa().equalsIgnoreCase(time) || j.getTimeFora().equalsIgnoreCase(time)){
+            if(j.getTimeCasa().getNome().equalsIgnoreCase(time) || j.getTimeFora().getNome().equalsIgnoreCase(time)){
                 resultado.add(j);
             }
         }
