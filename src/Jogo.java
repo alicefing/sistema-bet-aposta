@@ -14,7 +14,7 @@ import java.util.List;
 public class Jogo {
 
     private int idJogo;
-    private String descritivo;
+    private String timeCasa, timeFora;
     private static double apostaMax;
     private static double premioMax;
     private List<String> jogadores = new ArrayList<>();
@@ -22,17 +22,20 @@ public class Jogo {
     public Jogo() {
     }
 
-    
-    public Jogo(int idJogo, String descritivo, double apostaMax, double premioMax) {
+    public Jogo(int idJogo, String timeCasa, String timeFora) {
         this.idJogo = idJogo;
-        this.descritivo = descritivo;
-        this.apostaMax = apostaMax;
-        this.premioMax = premioMax;
+        this.timeCasa = timeCasa;
+        this.timeFora = timeFora;
     }
 
-    public String getDescritivo() {
-        return descritivo;
+    public String getTimeCasa() {
+        return timeCasa;
     }
+
+    public String getTimeFora() {
+        return timeFora;
+    }
+    
 
     public List<String> getJogadores() {
         return jogadores;
@@ -47,4 +50,5 @@ public class Jogo {
         
         return valorPermitido;
     }
+    
 }
