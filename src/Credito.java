@@ -10,8 +10,6 @@
 public class Credito {
 
     private double saldo;
-    private String validade;
-    private String moeda;
     private boolean bloqueado;
 
     
@@ -23,8 +21,6 @@ public class Credito {
     
     public Credito(double saldo, String validade, String moeda, boolean bloqueado) {
       this.saldo = saldo;
-      this.validade = validade;
-      this.moeda = moeda;
       this.bloqueado = bloqueado;
     }
     
