@@ -11,8 +11,6 @@ public class Aposta {
 
     private int idAposta;
     private double valorAposta;
-    private int repetir;
-
     
     public Aposta() {
     }
@@ -21,7 +19,6 @@ public class Aposta {
     public Aposta(int idAposta, double valorAposta, int repetir) {
         this.idAposta = idAposta;
         this.valorAposta = valorAposta;
-        this.repetir = repetir;
     }
     
     public void definirValor(double valor) {
