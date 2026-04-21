@@ -2,14 +2,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
- * @author henri
+ * @author bruno
  */
 public class Time {
     
@@ -20,12 +15,19 @@ public class Time {
         this.nome = nome;
     }
 
+    //Retorna o nome do time
     public String getNome() {
         return nome;
     }
 
+    //Retorna a lista de jogadores do time
     public List<String> getJogadores() {
         return jogadores;
+    }
+    
+    //Adiciona uma lista de jogadores ao time
+    public void adcJogadores(List<String> jogadores){
+        this.jogadores = jogadores;
     }
     
     
