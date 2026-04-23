@@ -22,7 +22,7 @@ public class Aposta {
     // Tipo da aposta
     private int tipo;
 
-    private int limiteGols;       // tipo 1
+    private int qntdGols;       // tipo 1
     private Time timeEscolhido; // tipo 2
     private int tempoEscolhido;   // tipo 3 
 
@@ -41,9 +41,9 @@ public class Aposta {
     }
 
 
-    public void apostarGols(int limite) {
+    public void apostarGols(int gols) {
         this.tipo = 1;
-        this.limiteGols = limite;
+        this.qntdGols = gols;
     }
 
     public void apostarVencedor(Time time) {
@@ -93,10 +93,10 @@ public class Aposta {
             case 1:
                 System.out.println("Gols na partida: " + golsPartida);
 
-                if (golsPartida > limiteGols) {
+                if (golsPartida > qntdGols) {
                     System.out.println("Acertou!");
                     System.out.println("Ganhou: R$ " + (valorAposta * 2));
-                } else if (golsPartida == limiteGols) {
+                } else if (golsPartida == qntdGols) {
                     System.out.println("Quase!");
                     System.out.println("Ganhou: R$ " + (valorAposta * 1.2));
                 } else {
@@ -142,4 +142,25 @@ public class Aposta {
     public void definirValor(double valor){
         this.valorAposta = valor;
     }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public int getLimiteGols() {
+        return qntdGols;
+    }
+
+    public Time getTimeEscolhido() {
+        return timeEscolhido;
+    }
+
+    public int getTempoEscolhido() {
+        return tempoEscolhido;
+    }
+
+    
+    
+    
+    
 }

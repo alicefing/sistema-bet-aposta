@@ -164,7 +164,12 @@ public class Jogador {
     public void listarApostas(){
         String mensagem = "Lista de apostas:\n";
         for(int i = 0; i < apostas.size(); i++){
-            mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i) + "\n";
+            
+            if(apostas.get(i).getTipo() == 1){
+                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getLimiteGols() + "\n";
+            }
+        
+            mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i). + "\n";
         }
 
         InOut.MsgSemIcone("Apostas", mensagem);
