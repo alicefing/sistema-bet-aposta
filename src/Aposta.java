@@ -165,6 +165,11 @@ public class Aposta {
         return tempoEscolhido;
     }
 
+    public String getJogadorTime() {
+        return jogadorTime;
+    }
+
+    
     
     
     

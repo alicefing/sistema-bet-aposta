@@ -171,8 +171,12 @@ public class Jogador {
             if(apostas.get(i).getTipo() == 2){
                 mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getTimeEscolhido() + "\n";
             }
-        
-            mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i). + "\n";
+            if(apostas.get(i).getTipo() == 3){
+                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getTempoEscolhido()+ "\n";
+            }
+            if(apostas.get(i).getTipo() == 4){
+                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getJogadorTime()+ "\n";
+            } 
         }
 
         InOut.MsgSemIcone("Apostas", mensagem);
