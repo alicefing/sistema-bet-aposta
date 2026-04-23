@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +18,17 @@ public class Jogo {
     private Time timeCasa, timeFora;
     private static double apostaMax;
     private static double premioMax;
+    private LocalDate data;
     private List<String> jogadores = new ArrayList<>();
     
     public Jogo() {
     }
 
-    public Jogo(int idJogo, Time timeCasa, Time timeFora) {
+    public Jogo(int idJogo, Time timeCasa, Time timeFora, LocalDate data) {
         this.idJogo = idJogo;
         this.timeCasa = timeCasa;
         this.timeFora = timeFora;
+        this.data = data;
     }
 
     public Time getTimeCasa() {

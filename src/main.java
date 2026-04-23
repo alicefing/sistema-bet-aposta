@@ -20,4 +20,9 @@ void main() {
         //Adiciona os valores do map(lista de jogadores) a lista de jogadores do time
         sistema.adcJogadoresTime(time, entry.getValue());
     }
+    
+    //Adiciona todos as partidas da classe DadosPartidas a lista de partidas do sistema
+    for(Jogo p : DadosPartidas.getPartidas(sistema)){
+        sistema.adcPartida(p);
+    }
 }
