@@ -142,14 +142,15 @@ public class Jogador {
                     InOut.MsgDeInformacao("Saldo", 
                         "Saldo atual: " + credito.consultarSaldo());
                 }
-
-                case 5 -> criarAposta(sistema); 
-
-                case 6 -> listarApostas(); 
-
-                case 7 -> cancelarAposta();
                 
-                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
+
+                case 4 -> criarAposta(sistema); 
+
+                case 5 -> listarApostas(); 
+
+                case 6 -> cancelarAposta();
+                
+                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!"); 
 
                 default -> InOut.MsgDeErro("Erro", "Opção inválida!");
             }
