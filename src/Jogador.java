@@ -43,6 +43,7 @@ public class Jogador {
 
     public boolean cadastrar() {
 
+        System.out.println("Cadastro do jogador: ");
         this.idJogador = InOut.leInt("Digite o ID do jogador:"); //fazer tratamento de erro
         this.nome = InOut.leString("Digite o nome:"); //fazer tratamento de erro
         this.sobrenome = InOut.leString("Digite o sobrenome:"); //fazer tratamento de erro
@@ -114,13 +115,13 @@ public class Jogador {
 
         do {
             System.out.println("\n===== SISTEMA BET =====");
-            System.out.println("2 - Adicionar crédito");
-            System.out.println("3 - Sacar crédito");
-            System.out.println("4 - Consultar saldo");
-            System.out.println("5 - Criar aposta");
-            System.out.println("6 - Listar apostas");
-            System.out.println("7 - Cancelar aposta");
-            System.out.println("8 - Verificar resultados");
+            System.out.println("1 - Adicionar crédito");
+            System.out.println("2 - Sacar crédito");
+            System.out.println("3 - Consultar saldo");
+            System.out.println("4 - Criar aposta");
+            System.out.println("5 - Listar apostas");
+            System.out.println("6 - Cancelar aposta");
+            System.out.println("7 - Verificar resultados");
             System.out.println("0 - Sair");
 
             opcao = InOut.leInt("Escolha uma opção:");
