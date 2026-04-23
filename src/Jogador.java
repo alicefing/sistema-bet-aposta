@@ -72,7 +72,7 @@ public class Jogador {
         }
 
         Aposta aposta = new Aposta();
-        aposta.definirValor(valor); // fazer isso
+        //aposta.definirValor(valor); // fazer isso
         aposta.realizarAposta();
 
       
