@@ -117,13 +117,13 @@ public class Jogador {
 
         do {
             System.out.println("\n===== SISTEMA BET =====");
-            System.out.println("2 - Adicionar crédito");
-            System.out.println("3 - Sacar crédito");
-            System.out.println("4 - Consultar saldo");
-            System.out.println("5 - Criar aposta");
-            System.out.println("6 - Listar apostas");
-            System.out.println("7 - Cancelar aposta");
-            System.out.println("8 - Verificar resultados");
+            System.out.println("1 - Adicionar crédito");
+            System.out.println("2 - Sacar crédito");
+            System.out.println("3 - Consultar saldo");
+            System.out.println("4 - Criar aposta");
+            System.out.println("5 - Listar apostas");
+            System.out.println("6 - Cancelar aposta");
+            System.out.println("7 - Verificar resultados");
             System.out.println("0 - Sair");
 
             opcao = InOut.leInt("Escolha uma opção:");
@@ -144,6 +144,7 @@ public class Jogador {
                     InOut.MsgDeInformacao("Saldo", 
                         "Saldo atual: " + credito.consultarSaldo());
                 }
+                
 
                 case 4 -> criarAposta(sistema); 
 
@@ -151,7 +152,7 @@ public class Jogador {
 
                 case 6 -> cancelarAposta();
                 
-                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
+                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!"); 
 
                 default -> InOut.MsgDeErro("Erro", "Opção inválida!");
             }
