@@ -129,4 +129,8 @@ public class Aposta {
     public double getValor() {
         return valorAposta;
     }
+    
+    public void definirValor(double valor){
+        this.valorAposta = valor;
+    }
 }
