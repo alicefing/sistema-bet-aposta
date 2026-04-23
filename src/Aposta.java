@@ -23,12 +23,12 @@ public class Aposta {
     private int tipo;
 
     private int limiteGols;       // tipo 1
-    private String timeEscolhido; // tipo 2
+    private Time timeEscolhido; // tipo 2
     private int tempoEscolhido;   // tipo 3 
 
 
     private int golsPartida;
-    private String vencedor;
+    private Time vencedor;
     private int tempoResultado;
 
     public Aposta() {
@@ -46,7 +46,7 @@ public class Aposta {
         this.limiteGols = limite;
     }
 
-    public void apostarVencedor(String time) {
+    public void apostarVencedor(Time time) {
         this.tipo = 2;
         this.timeEscolhido = time;
     }
@@ -58,22 +58,31 @@ public class Aposta {
 
    
 
-    public void realizarAposta() {
+    public void realizarAposta(GerenciadorSistema sistema) {
         System.out.println("Aposta #" + idAposta + " realizada no valor de R$ " + valorAposta);
+        String mensagem = "Selecione o time que deseja apostar:\n";
+        for(int i = 0; i < sistema.getPartidas().size(); i++)
+        {
+            mensagem += (i + 1) + " " + sistema.getPartidas().get(i) + "\n";
+        }
+        
+        Time timeAposta = sistema.buscarTimePorNome(InOut.leString(mensagem));
+        apostarVencedor(timeAposta); 
+        
     }
 
   
 
-    public void gerarResultado() {
-        Random rand = new Random();
+    //public void gerarResultado() {
+        //Random rand = new Random();
 
-        golsPartida = rand.nextInt(8); 
+        //golsPartida = rand.nextInt(8); 
 
-        String[] times = {"Time A", "Time B"};
-        vencedor = times[rand.nextInt(2)];
+        //String[] times = {"Time A", "Time B"};
+        //vencedor = times[rand.nextInt(2)];
 
-        tempoResultado = rand.nextInt(3); 
-    }
+        //tempoResultado = rand.nextInt(3); 
+    //}
 
     public void verificarResultado() {
 
@@ -98,7 +107,7 @@ public class Aposta {
             case 2: 
                 System.out.println("Vencedor: " + vencedor);
 
-                if (vencedor.equalsIgnoreCase(timeEscolhido)) {
+                if (vencedor.equals(timeEscolhido)) {
                     System.out.println("Acertou!");
                     System.out.println("Ganhou: R$ " + (valorAposta * 2.5));
                 } else {
