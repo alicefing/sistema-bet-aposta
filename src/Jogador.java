@@ -41,26 +41,29 @@ public class Jogador {
     }
      
 
-    public boolean cadastrar() {
-
-        this.idJogador = InOut.leInt("Digite o ID do jogador:"); //fazer tratamento de erro
-        this.nome = InOut.leString("Digite o nome:"); //fazer tratamento de erro
-        this.sobrenome = InOut.leString("Digite o sobrenome:"); //fazer tratamento de erro
-        this.apelido = InOut.leString("Digite o apelido:"); //fazer tratamento de erro
-        this.cpf = InOut.leString("Digite o CPF:"); //fazer tratamento de erro
-        this.nacionalidade = InOut.leString("Digite a nacionalidade:"); //fazer tratamento de erro
-        while (true) {
-            try {
-                String entrada = InOut.leString("Digite a data de nascimento (AAAA-MM-DD): ");
-                this.dataNascimento = java.sql.Date.valueOf(entrada);
-                break; // sai do loop se der certo
-            } catch (IllegalArgumentException e) {
-            System.out.println("Data inválida! Use o formato AAAA-MM-DD.");
+    public void cadastrar() {
+        
+        boolean cadastro = false;
+        do{ 
+            this.idJogador = InOut.leInt("Digite o ID do jogador:"); //fazer tratamento de erro
+            this.nome = InOut.leString("Digite o nome:"); //fazer tratamento de erro
+            this.sobrenome = InOut.leString("Digite o sobrenome:"); //fazer tratamento de erro
+            this.apelido = InOut.leString("Digite o apelido:"); //fazer tratamento de erro
+            this.cpf = InOut.leString("Digite o CPF:"); //fazer tratamento de erro
+            this.nacionalidade = InOut.leString("Digite a nacionalidade:"); //fazer tratamento de erro
+            while (true) {
+                try {
+                    String entrada = InOut.leString("Digite a data de nascimento (AAAA-MM-DD): ");
+                    this.dataNascimento = java.sql.Date.valueOf(entrada);
+                    break; // sai do loop se der certo
+                } catch (IllegalArgumentException e) {
+                System.out.println("Data inválida! Use o formato AAAA-MM-DD.");
+                }
             }
-        }
 
-        InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
-        return true;
+            InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
+            cadastro = true;
+        }while(cadastro == false);    
     }
     
      public void criarAposta (GerenciadorSistema sistema){
@@ -132,7 +135,7 @@ public class Jogador {
                     credito.depositar(valor);
                 }
 
-                case 2 -> {
+                case 2 -> { 
                     double valor = InOut.leDouble("Valor para saque:");
                     credito.sacar(valor);
                 }
@@ -142,11 +145,11 @@ public class Jogador {
                         "Saldo atual: " + credito.consultarSaldo());
                 }
 
-                case 5 -> criarAposta(sistema); 
+                case 4 -> criarAposta(sistema); 
 
-                case 6 -> listarApostas(); 
+                case 5 -> listarApostas(); 
 
-                case 7 -> cancelarAposta();
+                case 6 -> cancelarAposta();
                 
                 case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
 
