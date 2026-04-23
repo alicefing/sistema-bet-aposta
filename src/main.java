@@ -3,8 +3,8 @@ void main() {
     GerenciadorSistema sistema = new GerenciadorSistema();
     
     Jogador jogador = new Jogador();
-    jogador.cadastrar();
-    jogador.menu();
+    boolean cadastro = jogador.cadastrar(); 
+    jogador.menu(sistema);
     
     Credito conta = new Credito();
     System.out.println("Saldo: " + conta.consultarSaldo());
