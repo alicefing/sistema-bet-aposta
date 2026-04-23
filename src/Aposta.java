@@ -25,6 +25,7 @@ public class Aposta {
     private int qntdGols;       // tipo 1
     private Time timeEscolhido; // tipo 2
     private int tempoEscolhido;   // tipo 3 
+    private String jogadorTime;  // tipo 4
 
 
     private int golsPartida;
@@ -54,6 +55,11 @@ public class Aposta {
     public void apostarTempo(int tempo) {
         this.tipo = 3;
         this.tempoEscolhido = tempo;
+    }
+    
+    public void apostarJogador(String jogadorEscolhido) {
+        this.tipo = 4;
+        this.jogadorTime = jogadorEscolhido;
     }
 
    

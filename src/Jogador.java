@@ -168,6 +168,9 @@ public class Jogador {
             if(apostas.get(i).getTipo() == 1){
                 mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getLimiteGols() + "\n";
             }
+            if(apostas.get(i).getTipo() == 2){
+                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getTimeEscolhido() + "\n";
+            }
         
             mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i). + "\n";
         }
