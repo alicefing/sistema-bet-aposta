@@ -8,6 +8,8 @@
  * @author alicefingiro
  */
 public class Credito {
+    
+    //fazer tratamento de erro de retirada do credito maior que o valor disponivel
 
     private double saldo;
     private boolean bloqueado;
