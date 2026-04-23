@@ -166,16 +166,16 @@ public class Jogador {
         for(int i = 0; i < apostas.size(); i++){
             
             if(apostas.get(i).getTipo() == 1){
-                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getLimiteGols() + "\n";
+                mensagem += "Aposta " + ": " + apostas.get(i).getLimiteGols() + "\n";
             }
             if(apostas.get(i).getTipo() == 2){
-                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getTimeEscolhido() + "\n";
+                mensagem += "Aposta " + ": " + apostas.get(i).getTimeEscolhido().getNome() + "\n";
             }
             if(apostas.get(i).getTipo() == 3){
-                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getTempoEscolhido()+ "\n";
+                mensagem += "Aposta " + ": " + apostas.get(i).getTempoEscolhido()+ "\n";
             }
             if(apostas.get(i).getTipo() == 4){
-                mensagem += "Aposta " + (i + 1) + ": " + apostas.get(i).getJogadorTime()+ "\n";
+                mensagem += "Aposta " + ": " + apostas.get(i).getJogadorTime()+ "\n";
             } 
         }
 
