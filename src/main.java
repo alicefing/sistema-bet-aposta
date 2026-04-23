@@ -3,7 +3,7 @@ void main() {
     GerenciadorSistema sistema = new GerenciadorSistema();
     
     Jogador jogador = new Jogador();
-    boolean cadastro = jogador.cadastrar(); 
+    jogador.cadastrar(); 
     jogador.menu(sistema);
     
     Credito conta = new Credito();
