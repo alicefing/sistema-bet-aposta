@@ -47,9 +47,9 @@ public class Aposta {
         this.qntdGols = gols;
     }
 
-    public void apostarVencedor(Time time) {
+    public void apostarVencedor(GerenciadorSistema sistema, String time) {
         this.tipo = 2;
-        this.timeEscolhido = time;
+        this.timeEscolhido = sistema.buscarTimePorNome(time);
     }
 
     public void apostarTempo(int tempo) {
@@ -69,11 +69,11 @@ public class Aposta {
         String mensagem = "Selecione o time que deseja apostar:\n";
         for(int i = 0; i < sistema.getPartidas().size(); i++)
         {
-            mensagem += (i + 1) + " " + sistema.getPartidas().get(i) + "\n";
+            mensagem += (i + 1) + " " + sistema.getPartidas().get(i).getTimeCasa() + "X" + sistema.getPartidas().get(i).getTimeFora() + "\n";
         }
         
-        Time timeAposta = sistema.buscarTimePorNome(InOut.leString(mensagem));
-        apostarVencedor(timeAposta); 
+       
+        apostarVencedor(sistema, InOut.leString(mensagem)); 
         
     }
 
