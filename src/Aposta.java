@@ -69,7 +69,7 @@ public class Aposta {
         String mensagem = "Selecione o time que deseja apostar:\n";
         for(int i = 0; i < sistema.getPartidas().size(); i++)
         {
-            mensagem += (i + 1) + " " + sistema.getPartidas().get(i).getTimeCasa() + "X" + sistema.getPartidas().get(i).getTimeFora() + "\n";
+            mensagem += (i + 1) + " " + sistema.getPartidas().get(i).getTimeCasa() + "X" + sistema.getPartidas().get(i).getTimeCasa() + "\n";
         }
         
        
