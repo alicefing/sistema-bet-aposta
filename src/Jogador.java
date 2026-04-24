@@ -42,31 +42,65 @@ public class Jogador {
      
 
     public void cadastrar() {
-        
-        boolean cadastro = false;
-        do{ 
-            this.idJogador = InOut.leInt("Digite o ID do jogador:"); //fazer tratamento de erro
-            this.nome = InOut.leString("Digite o nome:"); //fazer tratamento de erro
-            this.sobrenome = InOut.leString("Digite o sobrenome:"); //fazer tratamento de erro
-            this.apelido = InOut.leString("Digite o apelido:"); //fazer tratamento de erro
-            this.cpf = InOut.leString("Digite o CPF:"); //fazer tratamento de erro
-            this.nacionalidade = InOut.leString("Digite a nacionalidade:"); //fazer tratamento de erro
-            while (true) {
-                try {
-                    String entrada = InOut.leString("Digite a data de nascimento (AAAA-MM-DD): ");
-                    this.dataNascimento = java.sql.Date.valueOf(entrada);
-                    break; // sai do loop se der certo
-                } catch (IllegalArgumentException e) {
-                System.out.println("Data inválida! Use o formato AAAA-MM-DD.");
-                }
-            }
 
-            InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
-            cadastro = true;
-        }while(cadastro == false);    
-    }
+        // ID
+        while (true) {
+            this.idJogador = InOut.leInt("Digite o ID do jogador:");
+            if (idJogador > 0) break;
+            InOut.MsgDeErro("Erro", "ID deve ser positivo!");
+        }
+
+        // Nome
+        while (true) {
+            this.nome = InOut.leString("Digite o nome:");
+            if (nome != null && !nome.trim().isEmpty()) break;
+            InOut.MsgDeErro("Erro", "Nome inválido!");
+        }
+
+        // Sobrenome
+        while (true) {
+            this.sobrenome = InOut.leString("Digite o sobrenome:");
+            if (sobrenome != null && !sobrenome.trim().isEmpty()) break;
+            InOut.MsgDeErro("Erro", "Sobrenome inválido!");
+        }
+
+        // Apelido
+        while (true) {
+            this.apelido = InOut.leString("Digite o apelido:");
+            if (apelido != null && !apelido.trim().isEmpty()) break;
+            InOut.MsgDeErro("Erro", "Apelido inválido!");
+        }
+
+        // CPF
+        while (true) {
+            this.cpf = InOut.leString("Digite o CPF:");
+            if (cpf != null && cpf.matches("\\d{11}")) break;
+            InOut.MsgDeErro("Erro", "CPF inválido! (11 números)");
+        }
+
+        // Nacionalidade
+        while (true) {
+            this.nacionalidade = InOut.leString("Digite a nacionalidade:");
+            if (nacionalidade != null && !nacionalidade.trim().isEmpty()) break;
+            InOut.MsgDeErro("Erro", "Nacionalidade inválida!");
+        }
+
+        // Data
+        while (true) {
+            try {
+                this.dataNascimento = java.sql.Date.valueOf(
+                    InOut.leString("Digite a data (AAAA-MM-DD):")
+                );
+                break;
+            } catch (Exception e) {
+                InOut.MsgDeErro("Erro", "Data inválida!");
+            }
+        }
+
+        InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
+}
     
-     public void criarAposta (GerenciadorSistema sistema){
+    public void criarAposta (GerenciadorSistema sistema){
 
         double valor = InOut.leDouble("Digite o valor da aposta:");
 
