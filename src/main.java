@@ -2,12 +2,6 @@ void main() {
     
     GerenciadorSistema sistema = new GerenciadorSistema();
     
-    Jogador jogador = new Jogador();
-    jogador.cadastrar(); 
-    jogador.menu(sistema);
-    
-    Credito conta = new Credito();
-    System.out.println("Saldo: " + conta.consultarSaldo());
     
     //Cria um loop for que roda por toda a lista de times criados dentro da classe DadosTimes :)
     for(Map.Entry<String, List<String>> entry : DadosTimes.getJogadoresTimes().entrySet()){
@@ -25,4 +19,11 @@ void main() {
     for(Jogo p : DadosPartidas.getPartidas(sistema)){
         sistema.adcPartida(p);
     }
+    
+    Jogador jogador = new Jogador();
+    jogador.cadastrar(); 
+    jogador.menu(sistema);
+    
+    Credito conta = new Credito();
+    System.out.println("Saldo: " + conta.consultarSaldo());
 }

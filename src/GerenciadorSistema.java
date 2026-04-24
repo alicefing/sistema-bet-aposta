@@ -40,6 +40,7 @@ public class GerenciadorSistema {
         for (Time t : times){
             if(t.getNome().equalsIgnoreCase(nome)){
                 resultado = t;
+                break;
             }
         }
         return resultado;
