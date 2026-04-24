@@ -147,46 +147,52 @@ public class Jogador {
     
     public void menu(GerenciadorSistema sistema) {
 
-        int opcao;
+    int opcao;
 
         do {
-            System.out.println("\n===== SISTEMA BET =====");
-            System.out.println("1 - Adicionar crédito");
-            System.out.println("2 - Sacar crédito");
-            System.out.println("3 - Consultar saldo");
-            System.out.println("4 - Criar aposta");
-            System.out.println("5 - Listar apostas");
-            System.out.println("6 - Cancelar aposta");
-            System.out.println("7 - Verificar resultados");
-            System.out.println("0 - Sair");
+            opcao = InOut.leInt(
+                "==============================\n" +
+                "        SISTEMA BET          \n" +
+                "==============================\n\n" +
+                "1 - Adicionar crédito\n" +
+                "2 - Sacar crédito\n" +
+                "3 - Consultar saldo\n" +
+                "4 - Criar aposta\n" +
+                "5 - Listar apostas\n" +
+                "6 - Cancelar aposta\n" +
+                "7 - Verificar resultados\n" +
+                "0 - Sair\n\n" +
+                "Digite a opção desejada:"
+            );
 
-            opcao = InOut.leInt("Escolha uma opção:");
-
-            switch (opcao) { 
+            switch (opcao) {
 
                 case 1 -> {
                     double valor = InOut.leDouble("Valor para depósito:");
                     credito.depositar(valor);
                 }
 
-                case 2 -> { 
+                case 2 -> {
                     double valor = InOut.leDouble("Valor para saque:");
                     credito.sacar(valor);
                 }
 
                 case 3 -> {
-                    InOut.MsgDeInformacao("Saldo", 
+                    InOut.MsgDeInformacao("Saldo",
                         "Saldo atual: " + credito.consultarSaldo());
                 }
-                
 
-                case 4 -> criarAposta(sistema); 
+                case 4 -> criarAposta(sistema);
 
-                case 5 -> listarApostas(); 
+                case 5 -> listarApostas();
 
                 case 6 -> cancelarAposta();
-                
-                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!"); 
+
+                case 7 -> {
+                    InOut.MsgDeInformacao("Resultados", "Verificar resultados");
+                }
+
+                case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
 
                 default -> InOut.MsgDeErro("Erro", "Opção inválida!");
             }
