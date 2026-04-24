@@ -100,30 +100,60 @@ public class Jogador {
         InOut.MsgDeInformacao("Cadastro", "Jogador cadastrado com sucesso!");
 }
     
-    public void criarAposta (GerenciadorSistema sistema){
+    public void criarAposta(GerenciadorSistema sistema) {
 
-        double valor = InOut.leDouble("Digite o valor da aposta:");
+    int tipo = InOut.leInt(
+        "===== TIPOS DE APOSTA =====\n\n" +
+        "1 - Gols na partida\n" +
+        "2 - Vencedor do jogo\n" +
+        "3 - Jogador que faz gol\n\n" +
+        "Escolha o tipo:"
+    );
 
-        if (valor <= 0) {
-            InOut.MsgDeErro("Erro", "Valor inválido!");
-            return;
+    Aposta aposta = new Aposta();
+
+    switch (tipo) {
+
+        case 1 -> {
+            int gols = InOut.leInt("Quantidade de gols:");
+            aposta.apostarGols(gols);
         }
 
-        if (valor > credito.consultarSaldo()) {
-            InOut.MsgDeErro("Erro", "Saldo insuficiente!");
-            return;
+        case 2 -> {
+            String time = InOut.leString("Digite o nome do time:");
+            aposta.apostarVencedor(sistema, time);
         }
 
-        Aposta aposta = new Aposta();
-        aposta.definirValor(valor); 
-        aposta.realizarAposta(sistema);
+        case 3 -> {
+            String jogador = InOut.leString("Nome do jogador:");
+            aposta.apostarJogador(jogador);
+        }
 
-      
-        credito.sacar(valor);
-        apostas.add(aposta);
-
-        InOut.MsgDeInformacao("Sucesso", "Aposta criada!");
+        default -> {
+            InOut.MsgDeErro("Erro", "Tipo inválido!");
+            return;
+        }
     }
+
+    double valor = InOut.leDouble("Digite o valor da aposta:");
+
+    if (valor <= 0) {
+        InOut.MsgDeErro("Erro", "Valor inválido!");
+        return;
+    }
+
+    if (valor > credito.consultarSaldo()) {
+        InOut.MsgDeErro("Erro", "Saldo insuficiente!");
+        return;
+    }
+
+    aposta.definirValor(valor);
+
+    credito.sacar(valor);
+    apostas.add(aposta);
+
+    InOut.MsgDeInformacao("Sucesso", "Aposta criada com sucesso!");
+}
     
      public void cancelarAposta() {
 
@@ -182,7 +212,7 @@ public class Jogador {
                         "Saldo atual: " + credito.consultarSaldo());
                 }
 
-                case 4 -> criarAposta(sistema);
+                case 4 -> criarAposta(sistema); 
 
                 case 5 -> listarApostas();
 
