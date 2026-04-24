@@ -1,4 +1,5 @@
  
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /** 
@@ -28,6 +29,108 @@ public class InOut {
 		Entrada = JOptionPane.showInputDialog (null, frase, "Entrada de dados", JOptionPane.QUESTION_MESSAGE);
 		return Entrada;
 	}
+        
+        public static String leStringJogador(String frase){
+            String Entrada;
+
+            ImageIcon icon = new ImageIcon(
+                "src/img/perfilJogador.png"
+            );
+
+            Entrada = (String) JOptionPane.showInputDialog( 
+                null, 
+                frase, 
+                "Entrada de dados", 
+                JOptionPane.QUESTION_MESSAGE, 
+                icon, 
+                null, 
+                null 
+            ); 
+            return Entrada;
+        }
+        
+        public static String leStringJogadorFutebol(String frase){
+            String Entrada;
+
+            ImageIcon icon = new ImageIcon(
+                "src/img/jogadorFuteboll.png"
+            );
+
+            Entrada = (String) JOptionPane.showInputDialog( 
+                null, 
+                frase, 
+                "Entrada de dados", 
+                JOptionPane.QUESTION_MESSAGE, 
+                icon, 
+                null, 
+                null 
+            ); 
+            return Entrada;
+        }
+        
+        public static String leStringTime(String frase){
+            String Entrada;
+
+            ImageIcon icon = new ImageIcon(
+                "src/img/time.png"
+            );
+
+            Entrada = (String) JOptionPane.showInputDialog( 
+                null, 
+                frase, 
+                "Entrada de dados", 
+                JOptionPane.QUESTION_MESSAGE, 
+                icon, 
+                null, 
+                null 
+            ); 
+            return Entrada;
+        }
+        
+        public static int leIntJogador(String frase){
+            int num = 0;
+            String entrada;
+            boolean erro;
+
+            ImageIcon icon = new ImageIcon(
+                "src/img/perfilJogador.png"
+            );
+
+            do {
+                try {
+                    entrada = (String) JOptionPane.showInputDialog(
+                        null,
+                        frase,
+                        "Entrada de dados",
+                        JOptionPane.QUESTION_MESSAGE,
+                        icon,
+                        null,
+                        null
+                    );
+
+                    // se cancelar
+                    if (entrada == null) {
+                        return -1;
+                    }
+
+                    num = Integer.parseInt(entrada);
+                    erro = false;
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Digite um número inteiro válido!",
+                        ">>> ERRO <<<",
+                        JOptionPane.ERROR_MESSAGE,
+                        icon
+                    );
+                    erro = true;
+                }
+
+            } while (erro);
+
+            return num;
+        }
 	
 	/**
 	 * Este metodo eh para entrada de um objeto do tipo byte. Tem como parametro 
