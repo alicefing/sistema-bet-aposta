@@ -212,10 +212,7 @@ public class Jogador {
                 mensagem += "Aposta " + ": " + apostas.get(i).getTimeEscolhido().getNome() + "\n";
             }
             if(apostas.get(i).getTipo() == 3){
-                mensagem += "Aposta " + ": " + apostas.get(i).getTempoEscolhido()+ "\n";
-            }
-            if(apostas.get(i).getTipo() == 4){
-                mensagem += "Aposta " + ": " + apostas.get(i).getJogadorTime()+ "\n";
+                mensagem += "Aposta " + ": " + apostas.get(i).getJogadorEscolhido()+ "\n";
             } 
         }
 

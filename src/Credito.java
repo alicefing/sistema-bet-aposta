@@ -1,66 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author alicefingiro
- */
 public class Credito {
-    
-    //fazer tratamento de erro de retirada do credito maior que o valor disponivel
 
     private double saldo;
     private boolean bloqueado;
 
-    
     public Credito() {
         this.saldo = 0.0;
         this.bloqueado = false;
     }
 
-    
-    public Credito(double saldo, String validade, String moeda, boolean bloqueado) {
-      this.saldo = saldo;
-      this.bloqueado = bloqueado;
+    public Credito(double saldo, boolean bloqueado) {
+        this.saldo = saldo;
+        this.bloqueado = bloqueado;
     }
-    
 
     public void depositar(double valor) {
+
         if (bloqueado) {
-            System.out.println("Conta bloqueada! Não é possível depositar.");
+            InOut.MsgDeErro("Erro", "Conta bloqueada! Não é possível depositar.");
             return;
         }
 
         if (valor <= 0) {
-            System.out.println("Valor inválido para depósito.");
+            InOut.MsgDeErro("Erro", "Valor inválido para depósito.");
             return;
         }
 
         saldo += valor;
-        System.out.println("Depósito realizado! Saldo atual: " + saldo);
+        InOut.MsgDeInformacao("Depósito", "Depósito realizado! Saldo: " + saldo);
     }
 
-    
     public void sacar(double valor) {
+
         if (bloqueado) {
-            System.out.println("Conta bloqueada! Não é possível sacar.");
+            InOut.MsgDeErro("Erro", "Conta bloqueada! Não é possível sacar.");
             return;
         }
 
         if (valor <= 0) {
-            System.out.println("Valor inválido.");
+            InOut.MsgDeErro("Erro", "Valor inválido.");
             return;
         }
 
         if (valor > saldo) {
-            System.out.println("Saldo insuficiente!");
+            InOut.MsgDeErro("Erro", "Saldo insuficiente!");
             return;
         }
 
         saldo -= valor;
-        System.out.println("Saque realizado! Saldo atual: " + saldo);
+        InOut.MsgDeInformacao("Saque", "Saque realizado! Saldo: " + saldo);
     }
 
     public double consultarSaldo() {
@@ -71,15 +58,13 @@ public class Credito {
         return bloqueado;
     }
 
-   
     public void bloquear() {
         bloqueado = true;
-        System.out.println("Conta bloqueada!");
+        InOut.MsgDeInformacao("Conta", "Conta bloqueada!");
     }
 
-  
     public void desbloquear() {
         bloqueado = false;
-        System.out.println("Conta desbloqueada!");
+        InOut.MsgDeInformacao("Conta", "Conta desbloqueada!");
     }
 }
