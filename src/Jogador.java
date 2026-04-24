@@ -45,42 +45,42 @@ public class Jogador {
 
         // ID
         while (true) {
-            this.idJogador = InOut.leInt("Digite o ID do jogador:");
+            this.idJogador = InOut.leIntJogador("Digite o ID do jogador:");
             if (idJogador > 0) break;
             InOut.MsgDeErro("Erro", "ID deve ser positivo!");
         }
 
         // Nome
         while (true) {
-            this.nome = InOut.leString("Digite o nome:");
+            this.nome = InOut.leStringJogador("Digite o nome:");
             if (nome != null && !nome.trim().isEmpty()) break;
             InOut.MsgDeErro("Erro", "Nome inválido!");
         }
 
         // Sobrenome
         while (true) {
-            this.sobrenome = InOut.leString("Digite o sobrenome:");
+            this.sobrenome = InOut.leStringJogador("Digite o sobrenome:");
             if (sobrenome != null && !sobrenome.trim().isEmpty()) break;
             InOut.MsgDeErro("Erro", "Sobrenome inválido!");
         }
 
         // Apelido
         while (true) {
-            this.apelido = InOut.leString("Digite o apelido:");
+            this.apelido = InOut.leStringJogador("Digite o apelido:");
             if (apelido != null && !apelido.trim().isEmpty()) break;
             InOut.MsgDeErro("Erro", "Apelido inválido!");
         }
 
         // CPF
         while (true) {
-            this.cpf = InOut.leString("Digite o CPF:");
+            this.cpf = InOut.leStringJogador("Digite o CPF:");
             if (cpf != null && cpf.matches("\\d{11}")) break;
             InOut.MsgDeErro("Erro", "CPF inválido! (11 números)");
         }
 
         // Nacionalidade
         while (true) {
-            this.nacionalidade = InOut.leString("Digite a nacionalidade:");
+            this.nacionalidade = InOut.leStringJogador("Digite a nacionalidade:");
             if (nacionalidade != null && !nacionalidade.trim().isEmpty()) break;
             InOut.MsgDeErro("Erro", "Nacionalidade inválida!");
         }
@@ -89,7 +89,7 @@ public class Jogador {
         while (true) {
             try {
                 this.dataNascimento = java.sql.Date.valueOf(
-                    InOut.leString("Digite a data (AAAA-MM-DD):")
+                    InOut.leStringJogador("Digite a data (AAAA-MM-DD):")
                 );
                 break;
             } catch (Exception e) {
@@ -102,7 +102,7 @@ public class Jogador {
     
     public void criarAposta(GerenciadorSistema sistema) {
 
-        int tipo = InOut.leInt(
+        int tipo = InOut.leIntJogador(
             "===== TIPOS DE APOSTA =====\n\n" +
             "1 - Gols na partida\n" +
             "2 - Vencedor do jogo\n" +
@@ -115,17 +115,17 @@ public class Jogador {
         switch (tipo) {
 
             case 1 -> {
-                int gols = InOut.leInt("Quantidade de gols:");
+                int gols = InOut.leInt("Quantidade de gols:"); // le int com foto de bola de futebol na redd
                 aposta.apostarGols(gols);
             }
 
             case 2 -> {
-                String time = InOut.leString("Digite o nome do time:");
+                String time = InOut.leString("Digite o nome do time:"); // le string com um escudo
                 aposta.apostarVencedor(sistema, time);
             }
 
             case 3 -> {
-                String jogador = InOut.leString("Nome do jogador:");
+                String jogador = InOut.leStringJogadorFutebol("Nome do jogador:"); // le string com jogador de futebol
                 aposta.apostarJogador(jogador);
             }
 
@@ -135,7 +135,7 @@ public class Jogador {
             }
         }
 
-        double valor = InOut.leDouble("Digite o valor da aposta:");
+        double valor = InOut.leDouble("Digite o valor da aposta:"); // le double com foto de dinheiro
 
         if (valor <= 0) {
             InOut.MsgDeErro("Erro", "Valor inválido!");
@@ -198,12 +198,12 @@ public class Jogador {
             switch (opcao) {
 
                 case 1 -> {
-                    double valor = InOut.leDouble("Valor para depósito:");
+                    double valor = InOut.leDouble("Valor para depósito:"); //le double com cifrao
                     credito.depositar(valor);
                 }
 
                 case 2 -> {
-                    double valor = InOut.leDouble("Valor para saque:");
+                    double valor = InOut.leDouble("Valor para saque:"); //le double com cifrao
                     credito.sacar(valor);
                 }
 
