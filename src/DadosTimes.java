@@ -51,7 +51,7 @@ public class DadosTimes {
             "Pedro Morisco", "Tinga", "Maicon", "Tiago Cóser", "Bruno Melo", "Willian Oliveira", "Sebastián Gómez", "Vini Paulista", "Lucas Ronier", "Lavega", "Pedro Rocha"))
         );
         
-        jogadoresTimes.put("RB Bragantino", new ArrayList<>(List.of(
+        jogadoresTimes.put("Bragantino", new ArrayList<>(List.of(
             "Tiago Volpi", "Sant'Anna", "Alix", "Gustavo Marques", "J. Capixaba", "Matheus Fernandes", "Gustavo Neves", "Sosa", "Lucas Barbosa", "Mosquera", "Pitta"))
         );
         
