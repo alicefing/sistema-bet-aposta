@@ -264,6 +264,19 @@ public class InOut {
 
             return num;
         }
+        
+        public static void MsgDeInformacaoDin(String cabecalho, String frase){
+
+            ImageIcon icone = new ImageIcon("src/img/dinheiro.png"); // coloque seu PNG aqui
+
+            JOptionPane.showMessageDialog(
+                null,
+                frase,
+                cabecalho,
+                JOptionPane.INFORMATION_MESSAGE,
+                icone 
+            );
+        }
 	
 	/**
 	 * Este metodo eh para entrada de um objeto do tipo byte. Tem como parametro 

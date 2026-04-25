@@ -208,7 +208,7 @@ public class Jogador {
                 }
 
                 case 3 -> {
-                    InOut.MsgDeInformacao("Saldo",
+                    InOut.MsgDeInformacaoDin("Saldo",
                         "Saldo atual: " + credito.consultarSaldo());
                 }
 
