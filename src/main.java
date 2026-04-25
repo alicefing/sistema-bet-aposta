@@ -24,6 +24,11 @@ void main() {
     jogador.cadastrar(); 
     jogador.menu(sistema);
     
+    int opcao = InOut.leInt(msg); //ta dando erro
+    Jogo jogo = sistema.getPartidas().get(opcao - 1);
+    jogo.gerarResultado(); 
+    
+    
     Credito conta = new Credito();
     System.out.println("Saldo: " + conta.consultarSaldo());
 }
