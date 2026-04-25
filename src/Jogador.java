@@ -53,21 +53,21 @@ public class Jogador {
         // Nome
         while (true) {
             this.nome = InOut.leStringJogador("Digite o nome:");
-            if (nome != null && !nome.trim().isEmpty()) break;
+            if (nome != null && !nome.trim().isEmpty() && nome.matches("[a-zA-ZÀ-ÿ ]+")) break; 
             InOut.MsgDeErro("Erro", "Nome inválido!");
         }
 
         // Sobrenome
         while (true) {
             this.sobrenome = InOut.leStringJogador("Digite o sobrenome:");
-            if (sobrenome != null && !sobrenome.trim().isEmpty()) break;
+            if (sobrenome != null && !sobrenome.trim().isEmpty() && sobrenome.matches("[a-zA-ZÀ-ÿ ]+")) break; 
             InOut.MsgDeErro("Erro", "Sobrenome inválido!");
         }
 
         // Apelido
         while (true) {
             this.apelido = InOut.leStringJogador("Digite o apelido:");
-            if (apelido != null && !apelido.trim().isEmpty()) break;
+            if (apelido != null && !apelido.trim().isEmpty() && apelido.matches("[a-zA-ZÀ-ÿ ]+")) break; 
             InOut.MsgDeErro("Erro", "Apelido inválido!");
         }
 
@@ -81,7 +81,7 @@ public class Jogador {
         // Nacionalidade
         while (true) {
             this.nacionalidade = InOut.leStringJogador("Digite a nacionalidade:");
-            if (nacionalidade != null && !nacionalidade.trim().isEmpty()) break;
+            if (nacionalidade != null && !nacionalidade.trim().isEmpty() && nacionalidade.matches("[a-zA-ZÀ-ÿ ]+")) break; //!nacionalidade.matches("\\d+") -> verifica se é int
             InOut.MsgDeErro("Erro", "Nacionalidade inválida!");
         }
 
