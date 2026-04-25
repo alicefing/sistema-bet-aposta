@@ -72,7 +72,7 @@ public class InOut {
             String Entrada;
 
             ImageIcon icon = new ImageIcon(
-                "src/img/time.png"
+                "src/img/time-2.png"
             );
 
             Entrada = (String) JOptionPane.showInputDialog( 
@@ -139,7 +139,53 @@ public class InOut {
             boolean erro;
 
             ImageIcon icon = new ImageIcon(
-                "src/img/gol.png"
+                "src/img/gol-3.png"
+            );
+
+            do {
+                try {
+                    entrada = (String) JOptionPane.showInputDialog(
+                        null,
+                        frase,
+                        "Entrada de dados",
+                        JOptionPane.QUESTION_MESSAGE,
+                        icon,
+                        null,
+                        null
+                    );
+
+                    // se cancelar
+                    if (entrada == null) {
+                        return -1;
+                    }
+
+                    num = Integer.parseInt(entrada);
+                    erro = false;
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Digite um número inteiro válido!",
+                        ">>> ERRO <<<",
+                        JOptionPane.ERROR_MESSAGE,
+                        icon
+                    );
+                    erro = true;
+                }
+
+            } while (erro);
+
+            return num;
+        }
+        
+        
+        public static int leIntAposta(String frase){
+            int num = 0;
+            String entrada;
+            boolean erro;
+
+            ImageIcon icon = new ImageIcon(
+                "src/img/bet-2.png"
             );
 
             do {
