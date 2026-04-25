@@ -23,6 +23,7 @@ public class Jogador {
     
     private Credito credito = new Credito();
     private ArrayList<Aposta> apostas = new ArrayList<>();
+    private Time time;
 
 
     public Jogador() {
@@ -101,6 +102,14 @@ public class Jogador {
 }
     
     public void criarAposta(GerenciadorSistema sistema) {
+        String msgCriarAposta = "=== ESCOLHA A PARTIDA QUE DESEJA APOSTAR ===\n\n";
+        
+        for(int i = 0; i < sistema.getPartidas().size(); i++){
+           msgCriarAposta += "Partida " + (i + 1) + ": " + sistema.getPartidas().get(i).getTimeCasa().getNome()
+                   + " VS " + sistema.getPartidas().get(i).getTimeFora().getNome() + "\n";
+        }
+        
+        int opcao = InOut.leInt(msgCriarAposta);
 
         int tipo = InOut.leIntAposta( // le int com logo de aposta
             "===== TIPOS DE APOSTA =====\n\n" +
@@ -111,6 +120,8 @@ public class Jogador {
         );
 
         Aposta aposta = new Aposta();
+        String timeCasa = sistema.getPartidas().get(opcao - 1).getTimeCasa().getNome();
+        String timeFora = sistema.getPartidas().get(opcao - 1).getTimeFora().getNome();
 
         switch (tipo) {
 
@@ -120,12 +131,35 @@ public class Jogador {
             }
 
             case 2 -> {
-                String time = InOut.leStringTime("Digite o nome do time:"); 
+                boolean valido;
+                String time;
+                do{
+                    valido = true;
+                    time = InOut.leStringTime("Digite o nome do time:\n" +
+                        timeCasa + " ou " + timeFora)
+                            ; 
+                    if(!time.equalsIgnoreCase(timeCasa) && !time.equalsIgnoreCase(timeFora)){
+                        InOut.MsgDeAviso("ERROR", "Digite o nome de um dos times da partida selecionada.");
+                        valido = false;
+                    }
+                }while(!valido);
+                
                 aposta.apostarVencedor(sistema, time);
             }
 
             case 3 -> {
-                String jogador = InOut.leStringJogadorFutebol("Nome do jogador:"); 
+                boolean valido;
+                String jogador = "";
+                String msgJogador = String.format(
+                "Escolha o jogador que deseja apostar:\n" + //formatado por IA 
+                "%-20s | %-20s\n",
+                "Jogadores " + timeCasa,
+                "Jogadores " + timeFora);
+                
+                //int max = Math.max(sistema.getJogadores(timeCasa).size(), sistema.getJogadores(timeFora).size()); // Para o loop não correr o risco de não rodar toda a list
+                
+                //falta fazer o for para o print
+                
                 aposta.apostarJogador(jogador);
             }
 
