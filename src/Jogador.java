@@ -102,7 +102,7 @@ public class Jogador {
     
     public void criarAposta(GerenciadorSistema sistema) {
 
-        int tipo = InOut.leIntJogador( // le int com logo de aposta
+        int tipo = InOut.leIntAposta( // le int com logo de aposta
             "===== TIPOS DE APOSTA =====\n\n" +
             "1 - Gols na partida\n" +
             "2 - Vencedor do jogo\n" +
@@ -115,7 +115,7 @@ public class Jogador {
         switch (tipo) {
 
             case 1 -> {
-                int gols = InOut.leIntGol("Quantidade de gols:"); // diminuir da imagem do gol
+                int gols = InOut.leIntGol("Quantidade de gols:"); 
                 aposta.apostarGols(gols);
             }
 
@@ -180,7 +180,7 @@ public class Jogador {
     int opcao;
 
         do {
-            opcao = InOut.leInt(
+            opcao = InOut.leIntAposta(
                 "==============================\n" +
                 "        SISTEMA BET          \n" +
                 "==============================\n\n" +
