@@ -223,6 +223,47 @@ public class InOut {
 
             return num;
         }
+        
+        
+        
+
+        public static double leDoubleDin(String frase) {
+            double num = 0;
+            String entrada;
+            boolean erro;
+
+            // Caminho da imagem (ajuste conforme seu projeto)
+            ImageIcon icone = new ImageIcon("src/img/dinheiro.png");
+
+            do {
+                try {
+                    entrada = (String) JOptionPane.showInputDialog(
+                            null,
+                            frase,
+                            "Entrada de dados",
+                            JOptionPane.QUESTION_MESSAGE,
+                            icone,   // aqui vai a imagem
+                            null,
+                            ""
+                    );
+
+                    num = Double.parseDouble(entrada);
+                    erro = false;
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "VALOR DEVE SER UM NUMERO DO TIPO DOUBLE",
+                            ">>> ERRO <<<",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    erro = true;
+                }
+
+            } while (erro);
+
+            return num;
+        }
 	
 	/**
 	 * Este metodo eh para entrada de um objeto do tipo byte. Tem como parametro 

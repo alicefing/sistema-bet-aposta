@@ -120,7 +120,7 @@ public class Jogador {
             }
 
             case 2 -> {
-                String time = InOut.leStringTime("Digite o nome do time:"); // diminuir tamanho imagem time
+                String time = InOut.leStringTime("Digite o nome do time:"); 
                 aposta.apostarVencedor(sistema, time);
             }
 
@@ -135,7 +135,7 @@ public class Jogador {
             }
         }
 
-        double valor = InOut.leDouble("Digite o valor da aposta:"); // le double com foto de dinheiro
+        double valor = InOut.leDoubleDin("Digite o valor da aposta:"); 
 
         if (valor <= 0) {
             InOut.MsgDeErro("Erro", "Valor inválido!");
@@ -198,12 +198,12 @@ public class Jogador {
             switch (opcao) {
 
                 case 1 -> {
-                    double valor = InOut.leDouble("Valor para depósito:"); //le double com cifrao
+                    double valor = InOut.leDoubleDin("Valor para depósito:"); //le double com cifrao
                     credito.depositar(valor);
                 }
 
                 case 2 -> {
-                    double valor = InOut.leDouble("Valor para saque:"); //le double com cifrao
+                    double valor = InOut.leDoubleDin("Valor para saque:"); //le double com cifrao
                     credito.sacar(valor);
                 }
 
