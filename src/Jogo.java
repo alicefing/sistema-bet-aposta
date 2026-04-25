@@ -1,28 +1,19 @@
 
+
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author alicefingiro
- */
 public class Jogo {
 
     private int idJogo;
     private Time timeCasa, timeFora;
-    private static double apostaMax;
-    private static double premioMax;
     private LocalDate data;
-    private List<String> jogadores = new ArrayList<>();
-    
-    public Jogo() {
-    }
+
+    // RESULTADO
+    private int golsCasa;
+    private int golsFora;
+    private Time vencedor;
 
     public Jogo(int idJogo, Time timeCasa, Time timeFora, LocalDate data) {
         this.idJogo = idJogo;
@@ -38,20 +29,32 @@ public class Jogo {
     public Time getTimeFora() {
         return timeFora;
     }
-    
 
-    public List<String> getJogadores() {
-        return jogadores;
+    public int getGolsCasa() {
+        return golsCasa;
     }
-    
-    public boolean validarValor(float valor){
-        boolean valorPermitido = true;
-        
-        if(valor > apostaMax){
-            valorPermitido = false;
+
+    public int getGolsFora() {
+        return golsFora;
+    }
+
+    public Time getVencedor() {
+        return vencedor;
+    }
+
+    // RESULTADO É DO JOGO
+    public void gerarResultado() {
+        Random r = new Random();
+
+        golsCasa = r.nextInt(6);
+        golsFora = r.nextInt(6);
+
+        if (golsCasa > golsFora) {
+            vencedor = timeCasa;
+        } else if (golsFora > golsCasa) {
+            vencedor = timeFora;
+        } else {
+            vencedor = null; // empate
         }
-        
-        return valorPermitido;
     }
-    
 }

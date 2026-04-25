@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Aposta {
 
     private int idAposta;
@@ -11,16 +9,15 @@ public class Aposta {
     private Time timeEscolhido;
     private String jogadorEscolhido;
 
-    private int golsPartida;
-    private Time vencedor;
-    private String jogadorGols;
+    private Jogo jogo; // A APOSTA DEPENDE DO JOGO
 
     public Aposta() {}
 
-    public Aposta(int idAposta, double valorAposta, int tipo) {
+    public Aposta(int idAposta, double valorAposta, int tipo, Jogo jogo) {
         this.idAposta = idAposta;
         this.valorAposta = valorAposta;
         this.tipo = tipo;
+        this.jogo = jogo;
     }
 
     public void apostarGols(int gols) {
@@ -40,7 +37,7 @@ public class Aposta {
 
     public void realizarAposta(GerenciadorSistema sistema) {
 
-        String mensagem = "Selecione o time:\n";
+        String mensagem = "Selecione o jogo:\n";
 
         for (int i = 0; i < sistema.getPartidas().size(); i++) {
             mensagem += (i + 1) + " - " +
@@ -49,8 +46,9 @@ public class Aposta {
                 sistema.getPartidas().get(i).getTimeFora().getNome() + "\n";
         }
 
-        String time = InOut.leString(mensagem);
-        apostarVencedor(sistema, time);
+        int opcao = InOut.leInt(mensagem);
+
+        this.jogo = sistema.getPartidas().get(opcao - 1);
     }
 
     public void verificarResultado() {
@@ -60,11 +58,13 @@ public class Aposta {
         switch (tipo) {
 
             case 1 -> {
-                System.out.println("Gols na partida: " + golsPartida);
+                int totalGols = jogo.getGolsCasa() + jogo.getGolsFora();
 
-                if (golsPartida > qntdGols) {
+                System.out.println("Total de gols: " + totalGols);
+
+                if (totalGols > qntdGols) {
                     System.out.println("Acertou!");
-                } else if (golsPartida == qntdGols) {
+                } else if (totalGols == qntdGols) {
                     System.out.println("Quase!");
                 } else {
                     System.out.println("Errou!");
@@ -72,7 +72,14 @@ public class Aposta {
             }
 
             case 2 -> {
-                System.out.println("Vencedor: " + vencedor);
+
+                Time vencedor = jogo.getVencedor();
+
+                if (vencedor == null) {
+                    System.out.println("Empate!");
+                } else {
+                    System.out.println("Vencedor: " + vencedor.getNome());
+                }
 
                 if (vencedor != null && vencedor.equals(timeEscolhido)) {
                     System.out.println("Acertou!");
@@ -82,9 +89,12 @@ public class Aposta {
             }
 
             case 3 -> {
-                System.out.println("Jogador: " + jogadorGols);
 
-                if (jogadorGols != null && jogadorGols.equals(jogadorEscolhido)) {
+                System.out.println("Jogador: simulado");
+
+                if (jogadorEscolhido != null &&
+                    jogadorEscolhido.equals("Jogador X")) {
+
                     System.out.println("Acertou!");
                 } else {
                     System.out.println("Errou!");
@@ -121,5 +131,9 @@ public class Aposta {
 
     public String getJogadorEscolhido() {
         return jogadorEscolhido;
+    }
+
+    public Jogo getJogo() {
+        return jogo;
     }
 }

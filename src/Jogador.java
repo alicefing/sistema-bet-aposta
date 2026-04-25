@@ -219,7 +219,7 @@ public class Jogador {
                 case 6 -> cancelarAposta();
 
                 case 7 -> {
-                    InOut.MsgDeInformacao("Resultados", "Verificar resultados");
+                    InOut.MsgDeInformacao("Resultados", "Verificar resultados"); //verificar
                 }
 
                 case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");
