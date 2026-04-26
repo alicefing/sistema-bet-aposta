@@ -20,6 +20,9 @@ void main() {
         sistema.adcPartida(p);
     }
     
+    Background fundo = new Background();
+    fundo.gerarBack();
+    
     Jogador jogador = new Jogador();
     jogador.cadastrar(); 
     jogador.menu(sistema);
