@@ -259,6 +259,7 @@ public class Jogador {
 
         InOut.MsgDeInformacao("Cancelado", "Aposta cancelada e valor devolvido!");
     }
+}
     
     public void menu(GerenciadorSistema sistema) {
 
