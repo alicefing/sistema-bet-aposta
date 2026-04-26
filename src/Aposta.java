@@ -57,6 +57,8 @@ public class Aposta {
 
     public void verificarResultado() {
 
+        jogo.gerarResultado();
+        
         switch (tipo) {
 
             case 1 -> {
@@ -92,13 +94,15 @@ public class Aposta {
             }
 
             case 3 -> {
-
-                List<String> marcadoresGols = jogo.getMarcadoresGol();
                 
                 System.out.println("Jogador: simulado");
 
-                if (jogadorEscolhido != null && jogo.getMarcadoresGol().contains(jogadorEscolhido)) {
-                    InOut.MsgSemIcone("RESULTADO", "Acertou!");  
+                if (jogadorEscolhido != null) {
+                    if(jogo.getMarcadoresGol().contains(jogadorEscolhido)){
+                        InOut.MsgSemIcone("RESULTADO", "Acertou!");  
+                    } else {
+                    InOut.MsgSemIcone("RESULTADO", "Errou!");
+                    }
                 } else {
                     InOut.MsgSemIcone("RESULTADO", "Errou!");
                 }

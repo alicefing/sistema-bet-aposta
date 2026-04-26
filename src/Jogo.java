@@ -17,7 +17,7 @@ public class Jogo {
     private int golsCasa;
     private int golsFora;
     private Time vencedor;
-    private List<String> marcadoresGol;
+    private List<String> marcadoresGol = new ArrayList<>();
 
     public Jogo(int idJogo, Time timeCasa, Time timeFora, LocalDate data) {
         this.idJogo = idJogo;
