@@ -34,14 +34,17 @@ public class Jogo {
     }
 
     public int getGolsCasa() {
+        this.gerarResultado();
         return golsCasa;
     }
 
     public int getGolsFora() {
+        this.gerarResultado();
         return golsFora;
     }
 
     public Time getVencedor() {
+        this.gerarResultado();
         return vencedor;
     }
     
