@@ -123,6 +123,8 @@ public class Jogador {
         Aposta aposta = new Aposta();
         String timeCasa = sistema.getPartidas().get(opcao - 1).getTimeCasa().getNome();
         String timeFora = sistema.getPartidas().get(opcao - 1).getTimeFora().getNome();
+        String partidaAposta = timeCasa + "  VS " + timeFora;
+        aposta.setPartidaSelecionada(partidaAposta);
 
         switch (tipo) {
 
@@ -231,12 +233,12 @@ public class Jogador {
         for (int i = 0; i < apostas.size(); i++) {
 
         Aposta a = apostas.get(i);
-        mensagem += "\nAposta " + i + ":\n";
+        mensagem += "\nAposta " + (i + 1) + ":\n";
 
         switch (a.getTipo()) {
 
             case 1 -> {
-                mensagem += "Gols: " + a.getLimiteGols() + "\n";
+                mensagem += "Gols: " + a.getQntdGols() + "\n";
             }
 
             case 2 -> {
@@ -330,13 +332,18 @@ public class Jogador {
         for(int i = 0; i < apostas.size(); i++){
             
             if(apostas.get(i).getTipo() == 1){
-                mensagem += "Aposta " + ": " + apostas.get(i).getLimiteGols() + "\n";
+                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n"+ apostas.get(i).getQntdGols() 
+                        + " gol(s) ao total da partida" + "\n";
             }
             if(apostas.get(i).getTipo() == 2){
-                mensagem += "Aposta " + ": " + apostas.get(i).getTimeEscolhido().getNome() + "\n";
+                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                        + "Time apostado: "
+                        + apostas.get(i).getTimeEscolhido().getNome() + "\n";
             }
             if(apostas.get(i).getTipo() == 3){
-                mensagem += "Aposta " + ": " + apostas.get(i).getJogadorEscolhido()+ "\n";
+                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                        + "Jogador apostado: "
+                        + apostas.get(i).getJogadorEscolhido()+ "\n";
             } 
         }
 
