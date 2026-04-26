@@ -104,6 +104,7 @@ public class Aposta {
             default -> System.out.println("Tipo inválido!");
         }
     }
+    
 
     public int getIdAposta() {
         return idAposta;
