@@ -150,40 +150,48 @@ public class Jogador {
 
             case 3 -> {
                 boolean valido;
-                String msgJogador = String.format(
-                "Escolha o jogador que deseja apostar:\n" + //formatado por IA 
-                "%-20s | %-20s\n",
-                "Jogadores " + timeCasa,
-                "Jogadores " + timeFora + "\n");
+                //mensagem para escolher time
+                String escolhatxt = "Deseja apostar em um jogador do qual time?\nOpcão 1: " + timeCasa + 
+                        "\nOpção 2: " +  timeFora;
+                int escolhaTime, opcaoJogadorTime;
+                
+                //o jogador escolhe o time do jogador que ele quer apostar
+                do
+                {
+                    escolhaTime = InOut.leIntAposta(escolhatxt);
+                }
+                while(escolhaTime != 1 && escolhaTime != 2); //loop para caso ele escolha um numero diferente das opcoes 
+                
+                String msgJogador = 
+                "Escolha o jogador que deseja apostar:\n";
+                 
+                
+                // Para o loop não correr o risco de não rodar toda a list
+                int max = Math.max(sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).size(), sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).size()); 
                 
                 //Cria a mensagem com os nomes dos jogadores de cada time
-                for(int i = 0; i< 11;i++){
-                    msgJogador += String.format(
-                        "%-20s | %-20s\n",
-                        (i+1) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(i),
-                        (i+12) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(i)
-                    );
+                if(escolhaTime == 1){
+                    String txtTimeCasa = "Jogadores do " + timeCasa + ":\n";
+                    
+                    for(int i = 0; i < max; i++){
+                    
+                    txtTimeCasa += (i+1) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(i) + "\n";
+                             
+                    }
+                    opcaoJogadorTime = InOut.leIntJogador(msgJogador + txtTimeCasa);
+                    aposta.apostarJogador(sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(opcaoJogadorTime - 1));
                 }
-                
-                //Recebe a opção do usuário
-                int opcaoJogador = InOut.leInt(msgJogador);
-                
-                //int max = Math.max(sistema.getJogadores(timeCasa).size(), sistema.getJogadores(timeFora).size()); // Para o loop não correr o risco de não rodar toda a list
-                
-                //falta fazer o for para o print
-                
-                String jogador;
-                
-                //Define o nome do jogador caso ele seja do primeiro time
-                if(opcaoJogador <= 11){
-                    jogador = sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(opcaoJogador - 1);
-                }
-                //Define o nome do jogador caso ele seja do segundo time
                 else{
-                    jogador = sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(opcaoJogador - 12);
-                }
-                
-                aposta.apostarJogador(jogador);
+                    String txtTimeFora = "Jogadores do " + timeFora+ ":\n";
+                    
+                    for(int i = 0; i < max; i++){
+                    
+                    txtTimeFora+= (i+1) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(i) + "\n";
+                             
+                    }
+                    opcaoJogadorTime = InOut.leIntJogador(msgJogador + txtTimeFora);
+                    aposta.apostarJogador(sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(opcaoJogadorTime - 1));
+                } 
             }
 
             default -> {

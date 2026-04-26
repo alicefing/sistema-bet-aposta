@@ -44,7 +44,7 @@ public class Jogo {
     public Time getVencedor() {
         return vencedor;
     }
-
+    
     //Retorna uma lis contendo as listas de jogadores de cada time
     public List<List<String>> getJogadoresPartida() {
         jogadoresPartida.add(timeCasa.getJogadores());
