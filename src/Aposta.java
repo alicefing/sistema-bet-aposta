@@ -8,6 +8,7 @@ public class Aposta {
     private int qntdGols;
     private Time timeEscolhido;
     private String jogadorEscolhido;
+    private String partidaSelecionada;
 
     private Jogo jogo; // A APOSTA DEPENDE DO JOGO
 
@@ -122,7 +123,7 @@ public class Aposta {
         return tipo;
     }
 
-    public int getLimiteGols() {
+    public int getQntdGols() {
         return qntdGols;
     }
 
@@ -137,4 +138,14 @@ public class Aposta {
     public Jogo getJogo() {
         return jogo;
     }
+
+    public void setPartidaSelecionada(String partidaSelecionada) {
+        this.partidaSelecionada = partidaSelecionada;
+    }
+
+    public String getPartidaSelecionada() {
+        return partidaSelecionada;
+    }
+    
+    
 }
