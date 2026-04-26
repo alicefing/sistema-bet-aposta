@@ -1,3 +1,6 @@
+
+import java.util.List;
+
 public class Aposta {
 
     private int idAposta;
@@ -90,14 +93,14 @@ public class Aposta {
 
             case 3 -> {
 
+                List<String> marcadoresGols = jogo.getMarcadoresGol();
+                
                 System.out.println("Jogador: simulado");
 
-                if (jogadorEscolhido != null &&
-                    jogadorEscolhido.equals("Jogador X")) {
-
-                    System.out.println("Acertou!");
+                if (jogadorEscolhido != null && jogo.getMarcadoresGol().contains(jogadorEscolhido)) {
+                    InOut.MsgSemIcone("RESULTADO", "Acertou!");  
                 } else {
-                    System.out.println("Errou!");
+                    InOut.MsgSemIcone("RESULTADO", "Errou!");
                 }
             }
 
@@ -137,6 +140,11 @@ public class Aposta {
     public Jogo getJogo() {
         return jogo;
     }
+
+    public void setJogo(Jogo jogo) {
+        this.jogo = jogo;
+    }
+    
 
     public void setPartidaSelecionada(String partidaSelecionada) {
         this.partidaSelecionada = partidaSelecionada;

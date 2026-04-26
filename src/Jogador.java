@@ -121,6 +121,7 @@ public class Jogador {
         );
 
         Aposta aposta = new Aposta();
+        aposta.setJogo(sistema.getPartidas().get(opcao - 1));
         String timeCasa = sistema.getPartidas().get(opcao - 1).getTimeCasa().getNome();
         String timeFora = sistema.getPartidas().get(opcao - 1).getTimeFora().getNome();
         String partidaAposta = timeCasa + "  VS " + timeFora;
