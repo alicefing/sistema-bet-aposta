@@ -10,6 +10,7 @@
 import java.util.Date;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Jogador {
 
@@ -149,16 +150,38 @@ public class Jogador {
 
             case 3 -> {
                 boolean valido;
-                String jogador = "";
                 String msgJogador = String.format(
                 "Escolha o jogador que deseja apostar:\n" + //formatado por IA 
                 "%-20s | %-20s\n",
                 "Jogadores " + timeCasa,
-                "Jogadores " + timeFora);
+                "Jogadores " + timeFora + "\n");
+                
+                //Cria a mensagem com os nomes dos jogadores de cada time
+                for(int i = 0; i< 11;i++){
+                    msgJogador += String.format(
+                        "%-20s | %-20s\n",
+                        (i+1) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(i),
+                        (i+12) + " - " + sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(i)
+                    );
+                }
+                
+                //Recebe a opção do usuário
+                int opcaoJogador = InOut.leInt(msgJogador);
                 
                 //int max = Math.max(sistema.getJogadores(timeCasa).size(), sistema.getJogadores(timeFora).size()); // Para o loop não correr o risco de não rodar toda a list
                 
                 //falta fazer o for para o print
+                
+                String jogador;
+                
+                //Define o nome do jogador caso ele seja do primeiro time
+                if(opcaoJogador <= 11){
+                    jogador = sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(0).get(opcaoJogador - 1);
+                }
+                //Define o nome do jogador caso ele seja do segundo time
+                else{
+                    jogador = sistema.getPartidas().get(opcao - 1).getJogadoresPartida().get(1).get(opcaoJogador - 12);
+                }
                 
                 aposta.apostarJogador(jogador);
             }

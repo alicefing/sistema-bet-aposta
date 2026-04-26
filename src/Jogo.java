@@ -2,6 +2,8 @@
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Jogo {
@@ -9,6 +11,7 @@ public class Jogo {
     private int idJogo;
     private Time timeCasa, timeFora;
     private LocalDate data;
+    private List<List<String>> jogadoresPartida = new ArrayList<>();
 
     // RESULTADO
     private int golsCasa;
@@ -42,6 +45,15 @@ public class Jogo {
         return vencedor;
     }
 
+    //Retorna uma lis contendo as listas de jogadores de cada time
+    public List<List<String>> getJogadoresPartida() {
+        jogadoresPartida.add(timeCasa.getJogadores());
+        jogadoresPartida.add(timeFora.getJogadores());
+        
+        return jogadoresPartida;
+    }
+
+    
     // RESULTADO É DO JOGO
     public void gerarResultado() {
         Random r = new Random();
