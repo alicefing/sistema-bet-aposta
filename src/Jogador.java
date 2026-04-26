@@ -315,7 +315,11 @@ public class Jogador {
                 case 6 -> cancelarAposta();
 
                 case 7 -> {
-                    InOut.MsgDeInformacao("Resultados", "Verificar resultados"); //verificar
+                    for(int i = 0; i < apostas.size(); i++){
+                        InOut.MsgSemIcone("RESULTADO", "Resultado da aposta da partida: " + apostas.get(i).getPartidaSelecionada() + "\n");
+                        apostas.get(i).verificarResultado();
+                    }
+                    
                 }
 
                 case 0 -> InOut.MsgDeInformacao("Saindo", "Até logo!");

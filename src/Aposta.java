@@ -54,21 +54,19 @@ public class Aposta {
 
     public void verificarResultado() {
 
-        System.out.println("\n--- RESULTADO DA APOSTA " + idAposta + " ---");
-
         switch (tipo) {
 
             case 1 -> {
                 int totalGols = jogo.getGolsCasa() + jogo.getGolsFora();
-
-                System.out.println("Total de gols: " + totalGols);
+                
+                InOut.MsgSemIcone("RESULTADO", "Total de gols: " + totalGols);
 
                 if (totalGols > qntdGols) {
-                    System.out.println("Acertou!");
+                    InOut.MsgSemIcone("RESULTADO", "Acertou!");
                 } else if (totalGols == qntdGols) {
-                    System.out.println("Quase!");
+                    InOut.MsgSemIcone("RESULTADO", "Quase!");
                 } else {
-                    System.out.println("Errou!");
+                    InOut.MsgSemIcone("RESULTADO", "Errou!");
                 }
             }
 
@@ -77,15 +75,16 @@ public class Aposta {
                 Time vencedor = jogo.getVencedor();
 
                 if (vencedor == null) {
-                    System.out.println("Empate!");
+                    InOut.MsgSemIcone("RESULTADO", "Empate!");
                 } else {
-                    System.out.println("Vencedor: " + vencedor.getNome());
+                    InOut.MsgSemIcone("RESULTADO", vencedor.getNome());
+                    
                 }
 
                 if (vencedor != null && vencedor.equals(timeEscolhido)) {
-                    System.out.println("Acertou!");
+                    InOut.MsgSemIcone("RESULTADO", "Acertou!");
                 } else {
-                    System.out.println("Errou!");
+                    InOut.MsgSemIcone("RESULTADO", "Errou!");
                 }
             }
 
