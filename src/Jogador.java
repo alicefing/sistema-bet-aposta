@@ -236,13 +236,13 @@ public class Jogador {
             valido = true;
             index = InOut.leInt("Escolha a aposta que deseja cancelar\n" + this.listarApostas());
 
-            if ((index - 1) < 1 || (index - 1) > apostas.size()) {
+            if (index < 1 || index > apostas.size()) {
                 InOut.MsgDeErro("Erro", "Selecione uma aposta válida!");
                 valido = false;
             }
         }while(!valido);
         
-        Aposta aposta = apostas.remove(index);
+        Aposta aposta = apostas.remove(index - 1);
         credito.depositar(aposta.getValor());
 
         InOut.MsgDeInformacao("Cancelado", "Aposta cancelada e valor devolvido!");
