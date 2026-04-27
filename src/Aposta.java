@@ -94,9 +94,6 @@ public class Aposta {
             }
 
             case 3 -> {
-                
-                System.out.println("Jogador: simulado");
-
                 if (jogadorEscolhido != null) {
                     if(jogo.getMarcadoresGol().contains(jogadorEscolhido)){
                         InOut.MsgSemIcone("RESULTADO", "Acertou!");  
