@@ -17,6 +17,7 @@ public class Jogo {
     private int golsCasa;
     private int golsFora;
     private Time vencedor;
+    private List<String> marcadoresGol = new ArrayList<>();
 
     public Jogo(int idJogo, Time timeCasa, Time timeFora, LocalDate data) {
         this.idJogo = idJogo;
@@ -47,6 +48,11 @@ public class Jogo {
         this.gerarResultado();
         return vencedor;
     }
+
+    public List<String> getMarcadoresGol() {
+        return marcadoresGol;
+    }
+    
     
     //Retorna uma lis contendo as listas de jogadores de cada time
     public List<List<String>> getJogadoresPartida() {
@@ -63,6 +69,14 @@ public class Jogo {
 
         golsCasa = r.nextInt(6);
         golsFora = r.nextInt(6);
+        
+        for(int i = 0; i<golsCasa; i++){
+           marcadoresGol.add(timeCasa.getJogadores().get(r.nextInt(11)));  
+        }
+        
+        for(int i = 0; i<golsFora; i++){
+           marcadoresGol.add(timeCasa.getJogadores().get(r.nextInt(11)));  
+        }
 
         if (golsCasa > golsFora) {
             vencedor = timeCasa;
