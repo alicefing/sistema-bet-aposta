@@ -41,7 +41,10 @@ public class Jogador {
         this.nacionalidade = nacionalidade;
         this.dataNascimento = dataNascimento;
     }
-     
+
+    public Credito getCredito() {
+        return credito;
+    }
 
     public void cadastrar() {
 
@@ -121,6 +124,7 @@ public class Jogador {
         );
 
         Aposta aposta = new Aposta();
+        aposta.setJogador(this);
         aposta.setJogo(sistema.getPartidas().get(opcao - 1));
         String timeCasa = sistema.getPartidas().get(opcao - 1).getTimeCasa().getNome();
         String timeFora = sistema.getPartidas().get(opcao - 1).getTimeFora().getNome();
@@ -217,7 +221,7 @@ public class Jogador {
 
         aposta.definirValor(valor);
 
-        credito.sacar(valor);
+        credito.diminuir(valor);
         apostas.add(aposta);
 
         InOut.MsgDeInformacao("Sucesso", "Aposta criada com sucesso!");

@@ -10,6 +10,7 @@ public class Aposta {
 
     private int qntdGols;
     private Time timeEscolhido;
+    private Jogador jogador;
     private String jogadorEscolhido;
     private String partidaSelecionada;
 
@@ -17,7 +18,7 @@ public class Aposta {
 
     public Aposta() {}
 
-    public Aposta(int idAposta, double valorAposta, int tipo, Jogo jogo) {
+    public Aposta(int idAposta, double valorAposta, int tipo, Jogo jogo, Jogador jogador) {
         this.idAposta = idAposta;
         this.valorAposta = valorAposta;
         this.tipo = tipo;
@@ -68,6 +69,8 @@ public class Aposta {
 
                 if (totalGols > qntdGols) {
                     InOut.MsgSemIcone("RESULTADO", "Acertou!");
+                    jogador.getCredito().aumentar(valorAposta * 1.8);
+                    InOut.MsgSemIcone("RESULTADO", "Aposta vencida\nSaldo aumentado em R$" + valorAposta * 1.8);
                 } else if (totalGols == qntdGols) {
                     InOut.MsgSemIcone("RESULTADO", "Quase!");
                 } else {
@@ -88,6 +91,8 @@ public class Aposta {
 
                 if (vencedor != null && vencedor.equals(timeEscolhido)) {
                     InOut.MsgSemIcone("RESULTADO", "Acertou!");
+                    jogador.getCredito().aumentar(valorAposta * 1.8);
+                    InOut.MsgSemIcone("RESULTADO", "Aposta vencida\nSaldo aumentado em R$" + valorAposta * 1.8);
                 } else {
                     InOut.MsgSemIcone("RESULTADO", "Errou!");
                 }
@@ -97,6 +102,8 @@ public class Aposta {
                 if (jogadorEscolhido != null) {
                     if(jogo.getMarcadoresGol().contains(jogadorEscolhido)){
                         InOut.MsgSemIcone("RESULTADO", "Acertou!");  
+                        jogador.getCredito().aumentar(valorAposta * 1.8);
+                        InOut.MsgSemIcone("RESULTADO", "Aposta vencida\nSaldo aumentado em R$" + valorAposta * 1.8);
                     } else {
                     InOut.MsgSemIcone("RESULTADO", "Errou!");
                     }
@@ -144,6 +151,10 @@ public class Aposta {
 
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
+    }
+
+    public void setJogador(Jogador jogador) {
+        this.jogador = jogador;
     }
     
 

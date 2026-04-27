@@ -31,6 +31,14 @@ public class Credito {
         saldo += valor;
         InOut.MsgDeInformacao("Depósito", "Depósito realizado! Saldo: " + saldo);
     }
+    
+    public void diminuir(double valor){
+        saldo -= valor;
+    }
+    
+    public void aumentar(double valor){
+        saldo += valor;
+    }
 
     public void sacar(double valor) {
 
