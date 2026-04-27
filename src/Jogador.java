@@ -130,7 +130,7 @@ public class Jogador {
         switch (tipo) {
 
             case 1 -> {
-                int gols = InOut.leIntGol("Quantidade de gols:"); 
+                int gols = InOut.leIntGol("Quantidade mínima de gols:"); 
                 aposta.apostarGols(gols);
             }
 
@@ -297,6 +297,7 @@ public class Jogador {
                     for(int i = 0; i < apostas.size(); i++){
                         InOut.MsgSemIcone("RESULTADO", "Resultado da aposta da partida: " + apostas.get(i).getPartidaSelecionada() + "\n");
                         apostas.get(i).verificarResultado();
+                        apostas.remove(i);
                     }
                     
                 }
@@ -315,16 +316,16 @@ public class Jogador {
         for(int i = 0; i < apostas.size(); i++){
             
             if(apostas.get(i).getTipo() == 1){
-                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n"+ apostas.get(i).getQntdGols() 
+                mensagem += (i + 1) + " Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n"+ apostas.get(i).getQntdGols() 
                         + " gol(s) ao total da partida" + "\n";
             }
             if(apostas.get(i).getTipo() == 2){
-                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                mensagem += (i + 1) + " Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
                         + "Time apostado: "
                         + apostas.get(i).getTimeEscolhido().getNome() + "\n";
             }
             if(apostas.get(i).getTipo() == 3){
-                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                mensagem += (i + 1) + " Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
                         + "Jogador apostado: "
                         + apostas.get(i).getJogadorEscolhido()+ "\n";
             } 
