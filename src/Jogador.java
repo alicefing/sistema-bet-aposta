@@ -223,52 +223,29 @@ public class Jogador {
     }
     
     public void cancelarAposta() {
-
-        if (apostas.isEmpty()) {
+        
+         if (apostas.isEmpty()) {
             InOut.MsgDeErro("Erro", "Não há apostas!");
             return;
         }
         
-        String mensagem = "Lista de apostas:\n";
-        for (int i = 0; i < apostas.size(); i++) {
+        int index;
+        boolean valido;
+        do{
+            valido = true;
+            index = InOut.leInt("Escolha a aposta que deseja cancelar\n" + this.listarApostas());
 
-        Aposta a = apostas.get(i);
-        mensagem += "\nAposta " + (i + 1) + ":\n";
-
-        switch (a.getTipo()) {
-
-            case 1 -> {
-                mensagem += "Gols: " + a.getQntdGols() + "\n";
+            if ((index - 1) < 1 || (index - 1) > apostas.size()) {
+                InOut.MsgDeErro("Erro", "Selecione uma aposta válida!");
+                valido = false;
             }
-
-            case 2 -> {
-                if (a.getTimeEscolhido() != null) {
-                    mensagem += "Time: " + a.getTimeEscolhido().getNome() + "\n";
-                }
-            }
-
-            case 3 -> {
-                if (a.getJogadorEscolhido() != null) {
-                    mensagem += "Jogador: " + a.getJogadorEscolhido() + "\n";
-                }
-            }
-        }
-
-        InOut.MsgSemIcone("Apostas", mensagem);
+        }while(!valido);
         
-
-        int index = InOut.leInt("Digite o índice da aposta que vai cancelar (0 a " + (apostas.size() - 1) + "):");
-
-        if (index < 0 || index >= apostas.size()) {
-            InOut.MsgDeErro("Erro", "Índice inválido!");
-            return;
-        }
-
         Aposta aposta = apostas.remove(index);
         credito.depositar(aposta.getValor());
 
         InOut.MsgDeInformacao("Cancelado", "Aposta cancelada e valor devolvido!");
-    }
+    
 }
     
     public void menu(GerenciadorSistema sistema) {
@@ -310,7 +287,8 @@ public class Jogador {
 
                 case 4 -> criarAposta(sistema); 
 
-                case 5 -> listarApostas();
+                case 5 -> {String listaApostas = listarApostas();
+                          InOut.MsgSemIcone("LISTA", listaApostas);}
 
                 case 6 -> cancelarAposta();
 
@@ -331,26 +309,26 @@ public class Jogador {
     }
 
     
-    public void listarApostas(){
+    public String listarApostas(){
         String mensagem = "Lista de apostas:\n";
         for(int i = 0; i < apostas.size(); i++){
             
             if(apostas.get(i).getTipo() == 1){
-                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n"+ apostas.get(i).getQntdGols() 
+                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n"+ apostas.get(i).getQntdGols() 
                         + " gol(s) ao total da partida" + "\n";
             }
             if(apostas.get(i).getTipo() == 2){
-                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
                         + "Time apostado: "
                         + apostas.get(i).getTimeEscolhido().getNome() + "\n";
             }
             if(apostas.get(i).getTipo() == 3){
-                mensagem += "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
+                mensagem += (i + 1) + "Aposta da partida " + apostas.get(i).getPartidaSelecionada() + "\n" 
                         + "Jogador apostado: "
                         + apostas.get(i).getJogadorEscolhido()+ "\n";
             } 
         }
 
-        InOut.MsgSemIcone("Apostas", mensagem);
+        return mensagem;
     }
 }
